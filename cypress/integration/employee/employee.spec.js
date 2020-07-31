@@ -1,15 +1,17 @@
 /// <reference types="cypress"/>
 
-import {clickOnLoginV1Link, navigateToHomePage} from '../../support/home/home.action'
+import {clickOnLoginV1Link} from '../../support/home/home.action'
 import {loginsAs} from '../../support/login/login.action'
-import {validateEmployeeFormIsVisble,fillEmployeeForm, addEmployeeAndValidateAlert} from '../../support/employee/employee.action'
+import {fillEmployeeForm, addEmployeeAndValidateAlert} from '../../support/employee/employee.action'
 
 describe('Employee tests',()=>{
-    it('Test add employee',()=>{
-        navigateToHomePage()
+
+    beforeEach(() => {
         clickOnLoginV1Link()
         loginsAs('user','user123')
-        validateEmployeeFormIsVisble()        
+    })
+
+    it('Test add employee',()=>{
 
         fillEmployeeForm('Juan','juan@gmail.com','MTZ','556682');
         addEmployeeAndValidateAlert()  

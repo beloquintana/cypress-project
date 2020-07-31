@@ -6,7 +6,7 @@ import {validateEmployeeFormIsVisble} from '../../support/employee/employee.acti
 
 describe('Login tests',()=>{
     it('Test succesfull login',()=>{
-        navigateToHomePage()
+        
         clickOnLoginV1Link()
         loginsAs('user','user123')
 
