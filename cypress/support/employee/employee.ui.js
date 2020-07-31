@@ -1,8 +1,12 @@
 /// <reference types="cypress" />
 
-export const Employee_FORM = '#formEmployee'
-export const NAME_INPUT = ':nth-child(1) > .form-control'
-export const EMAIL_INPUT = ':nth-child(2) > .form-control'
-export const ADDRESS_TEXT_AREA = '#address'
-export const PHONE_INPUT = '#phone'
+export const Employee_FORM = '#contentEmployee'
+export const NAME_INPUT = '#name'
+export const CITY_INPUT = '[ng-model="city"]'
+export const STATE_INPUT = '#state'
+export const EMAIL_INPUT = '#email'
+export const ADDRESS_INPUT = '#address'
+export const PHONE_INPUT = '#phoneNumber'
+export const POSTAL_CODE_INPUT = '#postcode'
 export const ADD_BUTTON = '#addButton'
+export const SUCCESS_ALERT = '#success-alert'

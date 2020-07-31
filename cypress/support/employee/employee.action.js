@@ -1,25 +1,24 @@
 /// <reference types="cypress" />
 
-import {Employee_FORM,ADDRESS_TEXT_AREA,EMAIL_INPUT,
-        NAME_INPUT,PHONE_INPUT, ADD_BUTTON} from './employee.ui'
+import {Employee_FORM,ADDRESS_INPUT,EMAIL_INPUT,
+        NAME_INPUT,PHONE_INPUT, ADD_BUTTON, 
+        CITY_INPUT, STATE_INPUT, POSTAL_CODE_INPUT, SUCCESS_ALERT} from './employee.ui'
 
 export function validateEmployeeFormIsVisble() {    
   cy.get(Employee_FORM).should('be.visible')
 }
 
-export function fillEmployeeForm(name, email, address, phone) {    
+export function fillEmployeeForm(name, email, address, phone, city, state, postalCode) {    
   cy.get(NAME_INPUT).type(name)
   cy.get(EMAIL_INPUT).type(email)
-  cy.get(ADDRESS_TEXT_AREA).type(address)
+  cy.get(ADDRESS_INPUT).type(address)
   cy.get(PHONE_INPUT).type(phone)
+  cy.get(CITY_INPUT).type(city)
+  cy.get(STATE_INPUT).type(state)
+  cy.get(POSTAL_CODE_INPUT).type(postalCode)
 }
 
-export function addEmployeeAndValidateAlert() {    
-  const stub = cy.stub().as('Confirmation alert')
-  cy.on('window:alert', stub)
-
-  cy.get(ADD_BUTTON).click().then(() => {
-    expect(stub).to.have.been.calledOnce
-    expect(stub.getCall(0)).to.be.calledWith('Success! Employee successfully added.')
-  })
+export function addEmployeeAndValidateSuccesMessage() {   
+  cy.get(ADD_BUTTON).click() 
+  cy.get(SUCCESS_ALERT).should('be.visible')
 }
